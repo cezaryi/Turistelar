@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Turistelar</string>
+    <string name="button_login">Login</string>
+    <string name="button_passwordforgotten">Esqueceu a senha?</string>
+    <string name="button_cadastrar">cadastre-se</string>
+
 </resources>
