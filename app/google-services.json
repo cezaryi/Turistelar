@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "717811223729",
+    "firebase_url": "https://turistelarapp.firebaseio.com",
+    "project_id": "turistelarapp",
+    "storage_bucket": "turistelarapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717811223729:android:cc5e788de236b82fde2690",
+        "android_client_info": {
+          "package_name": "com.example.turistelar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717811223729-0jb2ffkf4bjksht6t1jej96p54fv8q74.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.turistelar",
+            "certificate_hash": "297de397520a7a5baf7e862dada30565fa0894e4"
+          }
+        },
+        {
+          "client_id": "717811223729-vocrosv3loi72hmckl7fdt24oqbv9pk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg7oNNJmOa9Xre8eCt9msePA5twjbLozc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717811223729-vocrosv3loi72hmckl7fdt24oqbv9pk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
