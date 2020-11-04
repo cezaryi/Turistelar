@@ -5,14 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6200EA"
+    android:foregroundGravity="fill_horizontal|center|fill"
+    android:orientation="vertical"
     tools:context=".activity.CadastrarActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bgcadastrar" />
+
+    <EditText
+        android:id="@+id/editText_RepetirSenhaCadastro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/edittext_cadastrar"
+        android:ems="10"
+        android:gravity="center|center_vertical"
+        android:hint="Repetir senha"
+        android:inputType="textPassword"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_SenhaCadastro" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Cadastrar"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:text="Cadastro"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,40 +58,94 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editText_NomeUsuarioCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/edittext_cadastrar"
         android:ems="10"
+        android:gravity="center|center_vertical"
+        android:hint="Nome de Usuário"
         android:inputType="textPersonName"
-        android:text="Nome de Usuário"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="170dp" />
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editText_EmailCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/edittext_cadastrar"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="242dp" />
+        android:gravity="center|center_vertical"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_NomeUsuarioCadastro" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/editText_SenhaCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/edittext_cadastrar"
         android:ems="10"
+        android:gravity="center|center_vertical"
+        android:hint="Senha"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="316dp" />
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText_EmailCadastro"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
+        android:id="@+id/button_CadastrarCadastro"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="395dp" />
+        android:layout_marginTop="32dp"
+        android:background="@drawable/buttoncadastrese"
+        android:gravity="center"
+        android:text="@string/button_cadastrar"
+        android:textColor="#6200EA"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_RepetirSenhaCadastro" />
+
+    <Button
+        android:id="@+id/button_CancelarCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Cancelar"
+        app:layout_constraintTop_toBottomOf="@+id/button_CadastrarCadastro"
+        tools:layout_editor_absoluteX="161dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
