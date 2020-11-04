@@ -3,6 +3,8 @@ package com.example.turistelar.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,8 +58,12 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
                     Toast.LENGTH_LONG).show();
         }else{
             if(senha.contentEquals(confirmaSenha) ){
-
-                    criarUsuario(email,senha);
+                    if(verificarInternet()){
+                        criarUsuario(email,senha);
+                    }
+                    else{
+                        Toast.makeText(getBaseContext(),"Erro - Verifique sua conexão",Toast.LENGTH_LONG).show();
+                    }
 
             }else{
 
@@ -77,11 +83,43 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
             }
             else{
                 String resposta = task.getException().toString();
-                Toast.makeText(getBaseContext(),resposta,Toast.LENGTH_LONG).show();
+                opcoesErro(resposta);
             }
         }
         });
+    }
 
+    private void opcoesErro(String resposta){
+        if (resposta.contains("least 6 characters")){
+
+            Toast.makeText(getBaseContext(),"Digite uma senha maior que 5 caracteres",Toast.LENGTH_LONG).show();
+
+        }
+        else if (resposta.contains("address is badly")){
+            Toast.makeText(getBaseContext(),"E-mail inválido",Toast.LENGTH_LONG).show();
+        }
+        else if (resposta.contains("address is already")){
+            Toast.makeText(getBaseContext(),"E-mail já cadastrado",Toast.LENGTH_LONG).show();
+        }
+        else if (resposta.contains("interrupted connection")){
+            Toast.makeText(getBaseContext(),"Sem conexão com o Firebase",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(getBaseContext(),resposta,Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
+    private boolean verificarInternet(){
+        ConnectivityManager conexao = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo informacao = conexao.getActiveNetworkInfo();
+        if( informacao != null && informacao.isConnected() ){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
