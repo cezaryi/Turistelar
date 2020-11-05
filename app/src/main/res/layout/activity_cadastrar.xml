@@ -32,7 +32,7 @@
         android:background="@drawable/edittext_cadastrar"
         android:ems="10"
         android:gravity="center|center_vertical"
-        android:hint="Repetir senha"
+        android:hint="Confirmar Senha"
         android:inputType="textPassword"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
