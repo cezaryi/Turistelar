@@ -3,6 +3,7 @@ package com.example.turistelar.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
         editText_repetirSenha = (EditText) findViewById(R.id.editText_RepetirSenhaCadastro);
 
         button_CadastrarCadastro = findViewById(R.id.button_CadastrarCadastro);
-        button_CancelarCadastro = findViewById(R.id.button_CancelarCadastro);
+        button_CancelarCadastro = findViewById(R.id.button_VoltarCadastro);
 
         button_CadastrarCadastro.setOnClickListener(this);
 
@@ -44,6 +45,10 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
         switch (view.getId()){
             case R.id.button_CadastrarCadastro:
                 cadastrar();
+                break;
+            case R.id.button_VoltarCadastro:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
                 break;
         }
     }

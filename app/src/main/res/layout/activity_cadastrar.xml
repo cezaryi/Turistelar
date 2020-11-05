@@ -140,12 +140,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_RepetirSenhaCadastro" />
 
     <Button
-        android:id="@+id/button_CancelarCadastro"
+        android:id="@+id/button_VoltarCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Cancelar"
-        app:layout_constraintTop_toBottomOf="@+id/button_CadastrarCadastro"
-        tools:layout_editor_absoluteX="161dp" />
+        android:text="Voltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_CadastrarCadastro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
