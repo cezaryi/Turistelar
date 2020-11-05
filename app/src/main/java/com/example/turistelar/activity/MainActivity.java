@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getBaseContext(),"Erro - Preencha os campos.",
                     Toast.LENGTH_LONG).show();
         }else{
-            if(verificarInternet()){
+            if(Util.verificarInternet(this)){
+                ConnectivityManager conexao = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
                 confirmarLoginEmail(email,senha);
             }else{
                 Toast.makeText(getBaseContext(),"Erro - Verifique sua conexão",Toast.LENGTH_LONG).show();
@@ -92,42 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                }
                else{
                    String resposta = task.getException().toString();
-                   opcoesErro(resposta);
+                   Util.opcoesErro(getBaseContext() , resposta);
                    //Toast.makeText(getBaseContext(),"Erro ao logar usuário",Toast.LENGTH_LONG).show();
                }
            }
        });
    }
 
-       private void opcoesErro(String resposta){
-           if (resposta.contains("least 6 characters")){
-               Toast.makeText(getBaseContext(),"Digite uma senha maior que 5 caracteres",Toast.LENGTH_LONG).show();
-           }
-           else if (resposta.contains("address is badly")){
-               Toast.makeText(getBaseContext(),"E-mail inválido",Toast.LENGTH_LONG).show();
-           }
-           else if (resposta.contains("interrupted connection")){
-               Toast.makeText(getBaseContext(),"Sem conexão com o Firebase",Toast.LENGTH_LONG).show();
-           }
-           else if (resposta.contains("password is invalid")){
-               Toast.makeText(getBaseContext(),"Senha inválida",Toast.LENGTH_LONG).show();
-           }
-           else if (resposta.contains("there is no user")){
-               Toast.makeText(getBaseContext(),"E-mail não cadastrado",Toast.LENGTH_LONG).show();
-           }
-           else{
-               Toast.makeText(getBaseContext(),resposta,Toast.LENGTH_LONG).show();
-           }
-   }
 
-    private boolean verificarInternet(){
-        ConnectivityManager conexao = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo informacao = conexao.getActiveNetworkInfo();
-        if( informacao != null && informacao.isConnected() ){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
+
 }

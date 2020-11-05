@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class CadastrarActivity extends AppCompatActivity  implements View.OnClickListener {
     private EditText editText_nomeUsuario, editText_Email, editText_Senha,editText_repetirSenha;
-    private Button button_CadastrarCadastro, button_CancelarCadastro;
+    private Button button_CadastrarCadastro, button_VoltarCadastro;
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,12 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
         editText_repetirSenha = (EditText) findViewById(R.id.editText_RepetirSenhaCadastro);
 
         button_CadastrarCadastro = findViewById(R.id.button_CadastrarCadastro);
-        button_CancelarCadastro = findViewById(R.id.button_VoltarCadastro);
+        button_VoltarCadastro = findViewById(R.id.button_VoltarCadastro);
+
+
 
         button_CadastrarCadastro.setOnClickListener(this);
-
+        button_VoltarCadastro.setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
     }
@@ -63,7 +65,7 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
                     Toast.LENGTH_LONG).show();
         }else{
             if(senha.contentEquals(confirmaSenha) ){
-                    if(verificarInternet()){
+                    if(Util.verificarInternet(this)){
                         criarUsuario(email,senha);
                     }
                     else{
@@ -88,43 +90,13 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
             }
             else{
                 String resposta = task.getException().toString();
-                opcoesErro(resposta);
+                Util.opcoesErro(getBaseContext(),resposta);
             }
         }
         });
     }
 
-    private void opcoesErro(String resposta){
-        if (resposta.contains("least 6 characters")){
-
-            Toast.makeText(getBaseContext(),"Digite uma senha maior que 5 caracteres",Toast.LENGTH_LONG).show();
-
-        }
-        else if (resposta.contains("address is badly")){
-            Toast.makeText(getBaseContext(),"E-mail inválido",Toast.LENGTH_LONG).show();
-        }
-        else if (resposta.contains("address is already")){
-            Toast.makeText(getBaseContext(),"E-mail já cadastrado",Toast.LENGTH_LONG).show();
-        }
-        else if (resposta.contains("interrupted connection")){
-            Toast.makeText(getBaseContext(),"Sem conexão com o Firebase",Toast.LENGTH_LONG).show();
-        }
-        else{
-            Toast.makeText(getBaseContext(),resposta,Toast.LENGTH_LONG).show();
-        }
 
 
-    }
-
-    private boolean verificarInternet(){
-        ConnectivityManager conexao = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo informacao = conexao.getActiveNetworkInfo();
-        if( informacao != null && informacao.isConnected() ){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
 }
