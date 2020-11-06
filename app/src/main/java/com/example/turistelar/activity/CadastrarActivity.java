@@ -87,6 +87,7 @@ public class CadastrarActivity extends AppCompatActivity  implements View.OnClic
 
             if(task.isSuccessful()){
                 Toast.makeText(getBaseContext(),"Cadastro efetuado com sucesso.",Toast.LENGTH_LONG).show();
+                auth.signOut();
             }
             else{
                 String resposta = task.getException().toString();
