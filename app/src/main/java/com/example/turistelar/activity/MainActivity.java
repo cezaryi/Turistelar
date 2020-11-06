@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView_EsqueceuASenha;
     private EditText editText_UsuarioLogin, editText_SenhaLogin;
     private FirebaseAuth auth;
+    private FirebaseUser user;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView_EsqueceuASenha.setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
+        estadoAutenticacao();
+
+        user = auth.getCurrentUser();
+        if (user != null){
+            startActivity(new Intent (this,PrincipalActivity.class));
+        }
+
+
+
+    }
+    private void estadoAutenticacao(){
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Toast.makeText(getBaseContext(),"usuário"+user.getEmail()+" está logado",Toast.LENGTH_LONG).show();
+                }else{
+
+                }
+            }
+        };
     }
 
     @Override
@@ -101,6 +126,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authStateListener);
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(authStateListener != null){
+            auth.removeAuthStateListener(authStateListener);
+        }
+    }
 }
