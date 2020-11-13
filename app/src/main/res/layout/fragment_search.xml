@@ -42,7 +42,7 @@
         android:textColor="#333333"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/search_field" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recent_recycler"
@@ -52,6 +52,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
