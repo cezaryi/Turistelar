@@ -17,11 +17,6 @@
         android:icon="@drawable/ic_map"
         android:title="Mapa"/>
     <item
-        android:id="@+id/parceria"
-        android:enabled="true"
-        android:icon="@drawable/ic_lock"
-        android:title="Parcerias"/>
-    <item
         android:id="@+id/perfil"
         android:enabled="true"
         android:icon="@drawable/ic_baseline"
