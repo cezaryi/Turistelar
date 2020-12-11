@@ -6,11 +6,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_home"
         android:title="Home"/>
-    <item
-        android:id="@+id/search"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_search"
-        android:title="Pesquisar"/>
+
     <item
         android:id="@+id/map"
         android:enabled="true"

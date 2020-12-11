@@ -57,11 +57,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 PrincipalActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case  R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                BuscarActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case  R.id.map:
                         return true;
                     case  R.id.perfil:
@@ -101,6 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cezario));
         CameraPosition cameraPosition = new CameraPosition.Builder().zoom(15).target(cezario).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
     }
     private ArrayList findUnAskedPermissions(ArrayList<String> wanted) {
         ArrayList result = new ArrayList();

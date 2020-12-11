@@ -16,18 +16,15 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.security.Principal;
 
-public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button button_Deslogar;
-    private FirebaseAuth auth;
+public class PrincipalActivity extends AppCompatActivity  {
+
     private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        button_Deslogar = findViewById(R.id.button_Deslogar);
-        button_Deslogar.setOnClickListener(this);
-        auth = FirebaseAuth.getInstance();
+
 
 
         bottomNavigationView = findViewById(R.id.bottomNav);
@@ -39,11 +36,7 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
                 switch(menuItem.getItemId()){
                     case  R.id.home:
                         return true;
-                    case  R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                BuscarActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+
                     case  R.id.map:
                         startActivity(new Intent(getApplicationContext(),
                                 MapsActivity.class));
@@ -69,14 +62,5 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
 
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.button_Deslogar:
-                auth.signOut();
-                startActivity(new Intent(getBaseContext(), LoginActivity.class));
-                finish();
-                break;
-        }
-    }
+
 }

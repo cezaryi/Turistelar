@@ -6,12 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.turistelar.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class PerfilActivity extends AppCompatActivity {
+public class PerfilActivity extends AppCompatActivity implements View.OnClickListener{
     private BottomNavigationView bottomNavigationView;
+    private Button button_Deslogar;
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +24,9 @@ public class PerfilActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setSelectedItemId(R.id.perfil);
+        button_Deslogar = findViewById(R.id.button_Deslogar);
+        button_Deslogar.setOnClickListener(this);
+        auth = FirebaseAuth.getInstance();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -27,11 +35,6 @@ public class PerfilActivity extends AppCompatActivity {
                     case  R.id.home:
                         startActivity(new Intent(getApplicationContext(),
                                 PrincipalActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case  R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                BuscarActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case  R.id.map:
@@ -47,5 +50,15 @@ public class PerfilActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_Deslogar:
+                auth.signOut();
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                finish();
+                break;
+        }
     }
 }
