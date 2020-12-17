@@ -8,15 +8,25 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.turistelar.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class PerfilActivity extends AppCompatActivity implements View.OnClickListener{
     private BottomNavigationView bottomNavigationView;
     private Button button_Deslogar;
     private FirebaseAuth auth;
+    private EditText editText_email;
+    private EditText editText_nome;
+    private Button button_Salvar;
+    private FirebaseUser user;
+    private FirebaseAuth.AuthStateListener authStateListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +37,7 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
         button_Deslogar = findViewById(R.id.button_Deslogar);
         button_Deslogar.setOnClickListener(this);
         auth = FirebaseAuth.getInstance();
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -50,6 +61,8 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
                 return false;
             }
         });
+
+
     }
     @Override
     public void onClick(View view) {
@@ -59,6 +72,17 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(getBaseContext(), LoginActivity.class));
                 finish();
                 break;
+            case R.id.button_database_salvar:
+                updateEmail(user.getEmail());
+                break;
+        }
+    }
+
+    private void updateEmail(String email){
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if(user != null){
+            Toast.makeText(getBaseContext(),"usuário"+user.getEmail()+" está logado",Toast.LENGTH_LONG).show();
         }
     }
 }

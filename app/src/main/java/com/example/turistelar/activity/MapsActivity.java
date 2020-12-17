@@ -74,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        startGettingLocations();
+       startGettingLocations();
     }
 
     /**
@@ -96,6 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cezario));
         CameraPosition cameraPosition = new CameraPosition.Builder().zoom(15).target(cezario).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
 
     }
     private ArrayList findUnAskedPermissions(ArrayList<String> wanted) {
